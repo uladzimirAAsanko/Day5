@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class CharDeleteService implements DeleteFromText {
 
-    private final static String VOWELS = "AOUIE&&aoeui";
 
     @Override
     public String deleteNotLetters(String text) throws ProjectException {
@@ -16,7 +15,7 @@ public class CharDeleteService implements DeleteFromText {
             throw new ProjectException();
         }
         char[] charText = text.toCharArray();
-        ArrayList<Character> correctedText = new ArrayList<Character>();
+        ArrayList<Character> correctedText = new ArrayList<>();
         correctedText.add(' ');
         for(int i = 0; i < charText.length; i++){
             if(Character.isAlphabetic(charText[i]) || charText[i] == ' '){

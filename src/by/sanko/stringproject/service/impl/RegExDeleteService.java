@@ -7,11 +7,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegExDeleteService  implements DeleteFromText {
-    private final static String WORD = "\\p{L}+";
+    private static final String WORD = "\\p{L}+";
     private static final String NOT_LETTERS = "(?u)[^a-zA-z]";
     private static final String WORD_SAME_LENGTH = "\\b\\w{0,0}\\b";
     private static final String STARTED_ON_CONSONANT  = "^(?i:[^aeiouy]).*";
-    private final static String BOUND = "\\b";
+    private static final String BOUND = "\\b";
 
     @Override
     public String deleteNotLetters(String text) throws ProjectException {
@@ -34,9 +34,7 @@ public class RegExDeleteService  implements DeleteFromText {
         StringBuilder stringBuilder = new StringBuilder();
         for(int i = 0; i < words.length; i++){
             if(words[i].matches(STARTED_ON_CONSONANT) && words[i].matches(WORD)){
-                if(words[i].matches(findWordsLength)) {
-
-                }else{
+                if(!words[i].matches(findWordsLength)){
                     stringBuilder.append(words[i]).append(" ");
                 }
             }else{

@@ -5,10 +5,10 @@ import by.sanko.stringproject.service.DeleteFromText;
 
 public class StringDeleteService implements DeleteFromText {
 
-    private final static String BOUND = "\\b";
-    private final static String NOT_LETTER = "[^\\p{L}]";
-    private final static String WORD = "\\p{L}+";
-    private final static String VOWELS = "AOUIE&&aoeui";
+    private static final String BOUND = "\\b";
+    private static final String NOT_LETTER = "[^\\p{L}]";
+    private static final String WORD = "\\p{L}+";
+    private static final String VOWELS = "AOUIE&&aoeui";
 
     @Override
     public String deleteNotLetters(String text) throws ProjectException {
