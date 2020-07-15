@@ -13,23 +13,58 @@ public class StringReplaceService implements ReplaceInText {
             throw new ProjectException("Invalid data ");
         }
 
+        StringBuilder correctText = new StringBuilder();
         String[] words = text.split(BOUND);
         for(int i = 0; i < words.length; i++){
-            if(words[i].length() >= position - 1 && words[i].matches(WORD)){
+            if(words[i].length() > position - 1 && words[i].matches(WORD)){
                 String correctWord = words[i].substring(0, position-1) + c + words[i].substring(position);
-                text.replace(words[i], correctWord);
+                correctText.append(correctWord);
+            }else{
+                correctText.append(words[i]);
             }
         }
-        return text;
+        return correctText.toString();
     }
 
     @Override
     public String correctMisprint(String text) throws ProjectException {
-        return null;
+        if(text == null){
+            throw new ProjectException();
+        }
+
+        StringBuilder correctText = new StringBuilder();
+        String[] words = text.split(BOUND);
+        for(int i = 0; i < words.length; i++){
+            String correctWord = words[i];
+            int indexOfCharP = correctWord.indexOf('P');
+            while(indexOfCharP >= 0 && indexOfCharP < correctWord.length() - 1){
+                if(correctWord.charAt(indexOfCharP + 1) == 'A'){
+                    correctWord = correctWord.substring(0,indexOfCharP + 1) + 'O' + correctWord.substring(indexOfCharP + 2);
+                }
+                indexOfCharP = correctWord.indexOf('P', indexOfCharP + 1);
+            }
+            correctText.append(correctWord);
+        }
+        return correctText.toString();
     }
+
 
     @Override
     public String replaceWordsOnSubstring(String text, int wordLength, String substring) throws ProjectException {
-        return null;
+        if(text == null || wordLength < 1 || substring == null){
+            throw new ProjectException();
+        }
+
+        StringBuilder correctText = new StringBuilder();
+        String[] words = text.split(BOUND);
+
+        for(int i = 0; i < words.length; i++){
+            if(words[i].matches(WORD) && words[i].length() == wordLength){
+                correctText.append(substring);
+            }else{
+                correctText.append(words[i]);
+            }
+        }
+        return correctText.toString();
     }
 }
