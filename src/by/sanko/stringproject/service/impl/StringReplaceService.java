@@ -4,8 +4,8 @@ import by.sanko.stringproject.exception.ProjectException;
 import by.sanko.stringproject.service.ReplaceInText;
 
 public class StringReplaceService implements ReplaceInText {
-    private final static String BOUND = "\\b";
-    private final static String WORD = "\\p{L}+";
+    private static final String BOUND = "\\b";
+    private static final String WORD = "\\p{L}+";
 
     @Override
     public String replaceLetterFromPosition(String text, char c, int position) throws ProjectException {

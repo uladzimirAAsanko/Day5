@@ -4,15 +4,8 @@ import by.sanko.stringproject.exception.ProjectException;
 import by.sanko.stringproject.service.HandlingCharService;
 import by.sanko.stringproject.service.ReplaceInText;
 
-import javax.swing.plaf.basic.BasicButtonUI;
-import java.sql.Struct;
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.StringTokenizer;
-
 public class CharReplaceService  implements ReplaceInText {
-    private final static String BOUND = "\\b";
-    private final static String WORD = "\\p{L}+";
+
 
     @Override
     public String replaceLetterFromPosition(String text, char c, int position) throws ProjectException {
